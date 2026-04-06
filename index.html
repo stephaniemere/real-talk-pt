@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real Talk PT | European Portuguese for Real Life</title>
+    <meta name="description" content="Learn functional European Portuguese with situational phrases and AI-powered practice.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="navbar">
+        <div class="container">
+            <h1 class="logo">Real Talk <span>PT</span></h1>
+            <nav>
+                <a href="#dashboard" class="nav-link active">Situations</a>
+                <a href="#ai" id="nav-ai-chat" class="nav-link">AI Practice</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Dashboard Section: Scenario Grid -->
+        <section id="dashboard" class="view-section active">
+            <header class="section-header">
+                <h2>O que queres praticar hoje?</h2>
+                <p>Choose a real-world situation to practice your Portuguese.</p>
+            </header>
+            <div id="scenario-grid" class="grid">
+                <!-- Card templates will be injected here -->
+            </div>
+        </section>
+
+        <!-- Practice Section: Drill Logic -->
+        <section id="practice-view" class="view-section">
+            <button id="back-to-dashboard" class="btn-text">← Voltar aos Temas</button>
+            <div class="practice-layout">
+                <aside class="keywords-sidebar card">
+                    <h3>Palavras-chave</h3>
+                    <p class="sidebar-info">Clica numa palavra para praticar uma frase.</p>
+                    <ul id="keywords-list">
+                        <!-- Keywords injected here -->
+                    </ul>
+                </aside>
+
+                <div id="practice-card" class="card practice-container">
+                    <div class="practice-header">
+                        <span id="practice-icon" class="scenario-emoji">🌦️</span>
+                        <h3 id="practice-title">O Tempo</h3>
+                    </div>
+                    <div class="progress-bar">
+                        <div id="progress-inner" class="progress-fill"></div>
+                    </div>
+                    <div class="drill-area">
+                        <div id="active-word-label" class="badge">Keyword: <span>Sol</span></div>
+                        <h4 id="phrase-pt" class="phrase-main">Está sol.</h4>
+                        <p id="phrase-en" class="phrase-sub">It is sunny.</p>
+                        <div class="actions">
+                            <button id="btn-listen" class="btn btn-secondary">
+                                <span class="icon">🔊</span> Ouvir
+                            </button>
+                            <button id="btn-next" class="btn btn-primary">
+                                Próxima Frase →
+                            </button>
+                        </div>
+                    </div>
+                    <div class="roleplay-box">
+                        <strong>Situação:</strong>
+                        <p id="roleplay-text"></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- AI Chat Section -->
+        <section id="ai-view" class="view-section">
+            <header class="section-header">
+                <h2>AI Conversation Practice</h2>
+                <p>Talk to a native-like assistant. No stress, just chat.</p>
+            </header>
+            <div class="chat-container">
+                <div id="chat-history" class="chat-history">
+                    <div class="message assistant">
+                        Olá! Hoje vamos praticar situações do dia-a-dia. Sobre o que queres falar?
+                    </div>
+                </div>
+                <div class="chat-input-area">
+                    <input type="text" id="chat-input" placeholder="Escreve algo em português..." />
+                    <button id="btn-voice-chat" class="btn-icon">🎙️</button>
+                    <button id="btn-send-chat" class="btn btn-primary">Send</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="container">
+        <p>&copy; 2026 Real Talk PT - European Portuguese Learning</p>
+    </footer>
+
+    <script type="module" src="app.js"></script>
+</body>
+</html>
