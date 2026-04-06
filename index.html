@@ -15,18 +15,53 @@
         <div class="container">
             <h1 class="logo">Real Talk <span>PT</span></h1>
             <nav>
-                <a href="#dashboard" class="nav-link active">Situations</a>
+                <a href="#home" id="nav-home" class="nav-link active">Home</a>
+                <a href="#dashboard" id="nav-topics" class="nav-link">Topics</a>
+                <a href="#vocab" id="nav-vocab" class="nav-link">Vocab</a>
                 <a href="#ai" id="nav-ai-chat" class="nav-link">AI Practice</a>
             </nav>
         </div>
     </header>
 
     <main class="container">
+        <!-- Home Section: Landing Page -->
+        <section id="home-view" class="view-section active">
+            <div class="hero-card">
+                <div class="hero-content">
+                    <span class="badge">Functional European Portuguese</span>
+                    <h1>Portuguese that actually works.</h1>
+                    <p>Real Talk PT is the perfect starting place for beginners. Learn instantly usable vocabulary and functional sentences without the deep dive into grammar. Start speaking from day one.</p>
+                    <button class="btn btn-primary btn-lg" onclick="showView('dashboard')">Start Learning →</button>
+                </div>
+                <div class="hero-image">
+                    <img src="portuguese_street_hero_1775480924654.png" alt="Portuguese Street" />
+                </div>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-item">
+                    <span class="feature-icon">🚀</span>
+                    <h3>Instant Results</h3>
+                    <p>Focus on phrases you'll use in the real world immediately.</p>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">🎯</span>
+                    <h3>Topic-Based</h3>
+                    <p>Organized by real-life situations like weather, family, and hobbies.</p>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">🤖</span>
+                    <h3>AI Practice</h3>
+                    <p>Chat with a friendly AI tutor to build your confidence.</p>
+                </div>
+            </div>
+        </section>
+
         <!-- Dashboard Section: Scenario Grid -->
-        <section id="dashboard" class="view-section active">
+        <section id="dashboard" class="view-section">
             <header class="section-header">
-                <h2>O que queres praticar hoje?</h2>
-                <p>Choose a real-world situation to practice your Portuguese.</p>
+                <h2>Escolha um Tema</h2>
+                <p>Choose a real-world topic to practice your Portuguese.</p>
             </header>
             <div id="scenario-grid" class="grid">
                 <!-- Card templates will be injected here -->
@@ -71,6 +106,20 @@
                         <p id="roleplay-text"></p>
                     </div>
                 </div>
+            </div>
+        </section>
+
+        <!-- Vocab / Dictionary Section -->
+        <section id="vocab-view" class="view-section">
+            <header class="section-header">
+                <h2>Master Vocabulary</h2>
+                <p>An alphabetical list of all keywords used in Real Talk PT.</p>
+                <div class="search-container">
+                    <input type="text" id="vocab-search" placeholder="Search for a word (e.g., 'sol' or 'sun')..." />
+                </div>
+            </header>
+            <div id="vocab-list" class="dictionary-grid">
+                <!-- Sorted vocabulary injected here -->
             </div>
         </section>
 

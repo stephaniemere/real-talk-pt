@@ -32,15 +32,22 @@ const chatInput = document.getElementById('chat-input');
 const btnSendChat = document.getElementById('btn-send-chat');
 const btnVoiceChat = document.getElementById('btn-voice-chat');
 
+// Vocab View Elements
+const vocabList = document.getElementById('vocab-list');
+const vocabSearch = document.getElementById('vocab-search');
+let allKeywords = [];
+
 // --- Navigation ---
 function showView(viewId) {
     sections.forEach(s => s.classList.remove('active'));
+    
     const el = document.getElementById(viewId + '-view') || document.getElementById(viewId);
     if (el) el.classList.add('active');
     
     // Update nav-link active state
     navLinks.forEach(link => {
-        link.classList.toggle('active', link.getAttribute('href') === `#${viewId}`);
+        const href = link.getAttribute('href').substring(1);
+        link.classList.toggle('active', href === viewId);
     });
 
     // Special case for dashboard
@@ -48,7 +55,24 @@ function showView(viewId) {
         dashView.classList.add('active');
         aiView.classList.remove('active');
         practiceView.classList.remove('active');
+        document.getElementById('vocab-view').classList.remove('active');
+        document.getElementById('home-view').classList.remove('active');
     }
+    
+    if (viewId === 'home') {
+        document.getElementById('home-view').classList.add('active');
+        dashView.classList.remove('active');
+        aiView.classList.remove('active');
+        practiceView.classList.remove('active');
+        document.getElementById('vocab-view').classList.remove('active');
+    }
+
+    if (viewId === 'vocab') {
+        renderMasterVocab();
+    }
+
+    // Scroll to top
+    window.scrollTo(0, 0);
 }
 
 navLinks.forEach(link => {
@@ -109,7 +133,12 @@ function selectKeyword(index) {
     
     // Update UI
     activeWordLabel.textContent = kw.word;
-    phrasePt.textContent = kw.ex;
+    
+    // Bold the keyword in the sentence
+    const regex = new RegExp(`(${kw.word})`, 'gi');
+    const highlightedPhrase = kw.ex.replace(regex, '<strong>$1</strong>');
+    phrasePt.innerHTML = highlightedPhrase;
+    
     phraseEn.textContent = kw.en;
     
     // Update active state in sidebar
@@ -259,11 +288,59 @@ chatInput.onkeypress = (e) => {
     if (e.key === 'Enter') btnSendChat.click();
 };
 
+// --- Dictionary Logic ---
+function initMasterVocab() {
+    allKeywords = [];
+    scenarios.forEach(scen => {
+        if (scen.keywords) {
+            scen.keywords.forEach(kw => {
+                allKeywords.push({
+                    ...kw,
+                    category: scen.portugueseTitle
+                });
+            });
+        }
+    });
+
+    // Sort alphabetically by Portuguese word
+    allKeywords.sort((a, b) => a.word.localeCompare(b.word, 'pt'));
+}
+
+function renderMasterVocab(filter = '') {
+    vocabList.innerHTML = '';
+    const filtered = allKeywords.filter(kw => 
+        kw.word.toLowerCase().includes(filter.toLowerCase()) || 
+        kw.en.toLowerCase().includes(filter.toLowerCase())
+    );
+
+    filtered.forEach(kw => {
+        const card = document.createElement('div');
+        card.className = 'vocab-card';
+        card.innerHTML = `
+            <div class="vocab-row">
+                <span class="vocab-pt">${kw.word}</span>
+                <button class="btn-speaker" onclick="speak('${kw.word}')">🔊</button>
+            </div>
+            <span class="vocab-en">${kw.en}</span>
+            <span class="vocab-cat">${kw.category}</span>
+        `;
+        vocabList.appendChild(card);
+    });
+}
+
+vocabSearch.oninput = (e) => {
+    renderMasterVocab(e.target.value);
+};
+
 // Initialize
+initMasterVocab();
 renderScenarios();
-showView('dashboard');
+showView('home');
 
 // Ensure voices are loaded
 window.speechSynthesis.onvoiceschanged = () => {
     // Voices loaded
 };
+
+// Global Exposure for HTML onclicks
+window.speak = speak;
