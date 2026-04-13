@@ -1,5 +1,11 @@
 import { scenarios } from './data.js';
 
+// --- Configuration ---
+// When developing locally, it uses localhost. In production, you must update the URL below.
+const BACKEND_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+    ? 'http://localhost:8001'
+    : 'https://YOUR_BACKEND_SERVICE_URL_HERE'; 
+
 // --- State Management ---
 let currentScenario = null;
 let currentPhraseIndex = 0;
@@ -425,7 +431,7 @@ async function handleAssistantReply(userMsg) {
     chatHistory.scrollTop = chatHistory.scrollHeight;
 
     try {
-        const response = await fetch('http://localhost:8001/chat', {
+        const response = await fetch(`${BACKEND_URL}/chat`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ message: userMsg })

@@ -59,5 +59,6 @@ async def chat(request: ChatRequest):
         raise HTTPException(status_code=500, detail=str(e))
 
 if __name__ == "__main__":
-    # Run the server on port 8001
-    uvicorn.run(app, host="0.0.0.0", port=8001)
+    # Use the port assigned by the hosting provider (Render, Railway, etc.)
+    port = int(os.environ.get("PORT", 8001))
+    uvicorn.run(app, host="0.0.0.0", port=port)

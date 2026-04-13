@@ -11,6 +11,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <div class="top-tagline">
+        Built for people who don't care about grammar and just want to speak!
+    </div>
+
     <header class="navbar">
         <div class="container">
             <h1 class="logo">Real Talk <span>PT</span></h1>
@@ -26,84 +30,99 @@
     <main class="container">
         <!-- Home Section: Landing Page -->
         <section id="home-view" class="view-section active">
-            <div class="hero-card">
-                <div class="hero-content">
-                    <span class="badge">Functional European Portuguese</span>
-                    <h1>Portuguese that actually works.</h1>
-                    <p>Real Talk PT is the perfect starting place for beginners. Learn instantly usable vocabulary and functional sentences without the deep dive into grammar. Start speaking from day one.</p>
-                    <button class="btn btn-primary btn-lg" onclick="showView('dashboard')">Start Learning →</button>
+            <div class="container">
+                <div class="hero-card">
+                    <div class="hero-content">
+                        <span class="badge">Functional European Portuguese</span>
+                        <h1>Speak real Portuguese in days, not months.</h1>
+                        <p>No grammar, no textbooks. Just real conversations. Real Talk PT is the perfect starting place for beginners to learn instantly usable vocab and functional sentences.</p>
+                        <button class="btn btn-primary btn-lg" onclick="startBeginnerLesson()">Start your first lesson →</button>
+                    </div>
+                    <div class="hero-image">
+                        <img src="hero.png" alt="Portuguese Street" />
+                    </div>
                 </div>
-                <div class="hero-image">
-                    <img src="portuguese_street_hero_1775480924654.png" alt="Portuguese Street" />
-                </div>
-            </div>
-            
-            <div class="features-grid">
-                <div class="feature-item">
-                    <span class="feature-icon">🚀</span>
-                    <h3>Instant Results</h3>
-                    <p>Focus on phrases you'll use in the real world immediately.</p>
-                </div>
-                <div class="feature-item">
-                    <span class="feature-icon">🎯</span>
-                    <h3>Topic-Based</h3>
-                    <p>Organized by real-life situations like weather, family, and hobbies.</p>
-                </div>
-                <div class="feature-item">
-                    <span class="feature-icon">🤖</span>
-                    <h3>AI Practice</h3>
-                    <p>Chat with a friendly AI tutor to build your confidence.</p>
+                
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <span class="feature-icon">🚀</span>
+                        <h3>Instant Results</h3>
+                        <p>Focus on phrases you'll use in the real world immediately.</p>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">🎯</span>
+                        <h3>Topic-Based</h3>
+                        <p>Organized by real-life situations like weather, family, and hobbies.</p>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">🤖</span>
+                        <h3>AI Practice</h3>
+                        <p>Chat with a friendly AI tutor to build your confidence.</p>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Dashboard Section: Scenario Grid -->
+        <!-- Dashboard Section: Category Boxes (Tier 1) -->
         <section id="dashboard" class="view-section">
-            <header class="section-header">
-                <h2>Escolha um Tema</h2>
-                <p>Choose a real-world topic to practice your Portuguese.</p>
-            </header>
-            <div id="scenario-grid" class="grid">
-                <!-- Card templates will be injected here -->
+            <div class="container">
+                <header class="section-header">
+                    <h2>O que queres aprender?</h2>
+                    <p>Choose a category to start your journey.</p>
+                </header>
+                <div id="category-grid" class="category-grid">
+                    <!-- 3 Category Boxes will be injected here -->
+                </div>
             </div>
         </section>
 
-        <!-- Practice Section: Drill Logic -->
-        <section id="practice-view" class="view-section">
-            <button id="back-to-dashboard" class="btn-text">← Voltar aos Temas</button>
-            <div class="practice-layout">
-                <aside class="keywords-sidebar card">
-                    <h3>Palavras-chave</h3>
-                    <p class="sidebar-info">Clica numa palavra para praticar uma frase.</p>
-                    <ul id="keywords-list">
-                        <!-- Keywords injected here -->
-                    </ul>
-                </aside>
+        <!-- Category Detail Section: Topic Selection (Tier 2) -->
+        <section id="category-detail-view" class="view-section">
+            <div class="container">
+                <div class="view-header">
+                    <button id="back-to-categories" class="btn-text">← Voltar às Categorias</button>
+                    <h2 id="category-view-title" class="section-title">Common Topics</h2>
+                </div>
+                <div id="topic-grid" class="grid">
+                    <!-- Filtered topic cards will be injected here -->
+                </div>
+            </div>
+        </section>
 
-                <div id="practice-card" class="card practice-container">
-                    <div class="practice-header">
-                        <span id="practice-icon" class="scenario-emoji">🌦️</span>
-                        <h3 id="practice-title">O Tempo</h3>
+        <!-- Practice Section: 6-Card Lesson Flow -->
+        <section id="practice-view" class="view-section">
+            <div class="container">
+                <div class="practice-header">
+                    <button id="back-to-dashboard" class="btn-text">← Voltar aos Temas</button>
+                    <div class="lesson-progress-bar">
+                        <div id="lesson-step-fill" class="step-fill" style="width: 16.6%"></div>
                     </div>
-                    <div class="progress-bar">
-                        <div id="progress-inner" class="progress-fill"></div>
-                    </div>
-                    <div class="drill-area">
-                        <div id="active-word-label" class="badge">Keyword: <span>Sol</span></div>
-                        <h4 id="phrase-pt" class="phrase-main">Está sol.</h4>
-                        <p id="phrase-en" class="phrase-sub">It is sunny.</p>
-                        <div class="actions">
-                            <button id="btn-listen" class="btn btn-secondary">
-                                <span class="icon">🔊</span> Ouvir
-                            </button>
-                            <button id="btn-next" class="btn btn-primary">
-                                Próxima Frase →
-                            </button>
+                    <div id="step-indicator" class="step-indicator">Step 1 of 6</div>
+                </div>
+
+                <div class="practice-layout">
+                    <!-- Sidebar (List of words) -->
+                    <aside class="keywords-sidebar">
+                        <div class="sidebar-header">
+                            <span id="practice-icon">🤝</span>
+                            <h2 id="practice-title">Cumprimentos</h2>
                         </div>
-                    </div>
-                    <div class="roleplay-box">
-                        <strong>Situação:</strong>
-                        <p id="roleplay-text"></p>
+                        <p id="roleplay-text" class="text-muted"></p>
+                        <ul id="keywords-list">
+                            <!-- Keywords will be injected here -->
+                        </ul>
+                    </aside>
+
+                    <!-- Lesson Theater -->
+                    <div class="lesson-theater">
+                        <div id="lesson-card" class="lesson-card shadow-lg">
+                            <div id="card-content-area"></div>
+                        </div>
+
+                        <div class="lesson-controls">
+                            <button id="btn-prev-step" class="btn btn-outline" disabled>Previous Step</button>
+                            <button id="btn-next-step" class="btn btn-primary">Next Step →</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -111,34 +130,38 @@
 
         <!-- Vocab / Dictionary Section -->
         <section id="vocab-view" class="view-section">
-            <header class="section-header">
-                <h2>Master Vocabulary</h2>
-                <p>An alphabetical list of all keywords used in Real Talk PT.</p>
-                <div class="search-container">
-                    <input type="text" id="vocab-search" placeholder="Search for a word (e.g., 'sol' or 'sun')..." />
+            <div class="container">
+                <header class="section-header">
+                    <h2>Master Vocabulary</h2>
+                    <p>An alphabetical list of all keywords used in Real Talk PT.</p>
+                    <div class="search-container">
+                        <input type="text" id="vocab-search" placeholder="Search for a word (e.g., 'sol' or 'sun')..." />
+                    </div>
+                </header>
+                <div id="vocab-list" class="dictionary-grid">
+                    <!-- Sorted vocabulary injected here -->
                 </div>
-            </header>
-            <div id="vocab-list" class="dictionary-grid">
-                <!-- Sorted vocabulary injected here -->
             </div>
         </section>
 
         <!-- AI Chat Section -->
         <section id="ai-view" class="view-section">
-            <header class="section-header">
-                <h2>AI Conversation Practice</h2>
-                <p>Talk to a native-like assistant. No stress, just chat.</p>
-            </header>
-            <div class="chat-container">
-                <div id="chat-history" class="chat-history">
-                    <div class="message assistant">
-                        Olá! Hoje vamos praticar situações do dia-a-dia. Sobre o que queres falar?
+            <div class="container">
+                <header class="section-header">
+                    <h2>AI Conversation Practice</h2>
+                    <p>Talk to a native-like assistant. No stress, just chat.</p>
+                </header>
+                <div class="chat-container">
+                    <div id="chat-history" class="chat-history">
+                        <div class="message assistant">
+                            Olá! Hoje vamos praticar situações do dia-a-dia. Sobre o que queres falar?
+                        </div>
                     </div>
-                </div>
-                <div class="chat-input-area">
-                    <input type="text" id="chat-input" placeholder="Escreve algo em português..." />
-                    <button id="btn-voice-chat" class="btn-icon">🎙️</button>
-                    <button id="btn-send-chat" class="btn btn-primary">Send</button>
+                    <div class="chat-input-area">
+                        <input type="text" id="chat-input" placeholder="Escreve algo em português..." />
+                        <button id="btn-voice-chat" class="btn-icon">🎙️</button>
+                        <button id="btn-send-chat" class="btn btn-primary">Send</button>
+                    </div>
                 </div>
             </div>
         </section>

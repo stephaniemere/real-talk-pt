@@ -1,6 +1,7 @@
 export const scenarios = [
   {
     id: "weather",
+    category: "everyday",
     title: "The Weather",
     portugueseTitle: "O Tempo",
     icon: "🌦️",
@@ -40,18 +41,142 @@ export const scenarios = [
   },
   {
     id: "greetings",
+    category: "beginners",
     title: "Greetings & Small Talk",
     portugueseTitle: "Cumprimentos",
     icon: "🤝",
     roleplay: "Meeting a new person and starting a basic conversation.",
     keywords: [
-      { word: "Olá", en: "Hello! How are you?", ex: "Olá! Como estás?" },
-      { word: "Bom dia", en: "Good morning to everyone!", ex: "Bom dia a todos!" },
-      { word: "Boa tarde", en: "Good afternoon, Mr. Silva.", ex: "Boa tarde, senhor Silva." },
+      { 
+        word: "Olá", 
+        en: "Hello",
+        lessons: [
+            { type: 'audio', content: 'Olá', sub: 'Hello' },
+            { type: 'sentences', items: [
+                { pt: 'Olá! Como estás?', en: 'Hello! How are you?' },
+                { pt: 'Olá a todos.', en: 'Hello everyone.' },
+                { pt: 'Olá, sou o Pedro.', en: 'Hello, I am Pedro.' }
+            ]},
+            { type: 'breakdown', items: [
+                { pt: 'Olá', en: 'Hello' },
+                { pt: 'Como estás?', en: 'How are you? (informal)' },
+                { pt: 'a todos', en: 'to everyone' },
+                { pt: 'sou o Pedro', en: 'I am Pedro / My name is Pedro' }
+            ]},
+            { type: 'variety', items: [
+                { pt: 'Oi', en: 'Hi (informal / Brazilian influence)' },
+                { pt: 'Boas', en: 'Hey / Cheers (common informal greeting)' }
+            ]},
+            { type: 'game', sentence: 'Olá Como estás', words: ['Olá', 'Como', 'estás'] },
+            { type: 'tip', content: "In Portugal, 'Olá' is used at any time of day. It's the safest way to start any conversation!" }
+        ]
+      },
+      { 
+        word: "Bom dia", 
+        en: "Good morning",
+        lessons: [
+            { type: 'audio', content: 'Bom dia', sub: 'Good morning' },
+            { type: 'sentences', items: [
+                { pt: 'Bom dia a todos!', en: 'Good morning to everyone!' },
+                { pt: 'Bom dia, senhor Silva.', en: 'Good morning, Mr. Silva.' },
+                { pt: 'Bom dia, dormiste bem?', en: 'Good morning, did you sleep well?' }
+            ]},
+            { type: 'breakdown', items: [
+                { pt: 'Bom', en: 'Good' },
+                { pt: 'dia', en: 'day' },
+                { pt: 'senhor', en: 'Mister / Sir' },
+                { pt: 'dormiste bem?', en: 'did you sleep well? (informal)' }
+            ]},
+            { type: 'variety', items: [
+                { pt: 'Boa manhã', en: 'Good morning (less common)' }
+            ]},
+            { type: 'game', sentence: 'Bom dia a todos', words: ['Bom', 'dia', 'a', 'todos'] },
+            { type: 'tip', content: "Use 'Bom dia' until lunchtime (usually around 1 PM)." }
+        ]
+      },
+      { 
+        word: "Boa tarde", 
+        en: "Good afternoon",
+        lessons: [
+            { type: 'audio', content: 'Boa tarde', sub: 'Good afternoon' },
+            { type: 'sentences', items: [
+                { pt: 'Boa tarde, como posso ajudar?', en: 'Good afternoon, how can I help?' },
+                { pt: 'Boa tarde, um café por favor.', en: 'Good afternoon, a coffee please.' }
+            ]},
+            { type: 'breakdown', items: [
+                { pt: 'Boa', en: 'Good (feminine)' },
+                { pt: 'tarde', en: 'afternoon' },
+                { pt: 'como posso ajudar?', en: 'how can I help?' },
+                { pt: 'um café por favor', en: 'a coffee please' }
+            ]},
+            { type: 'variety', items: [
+                { pt: 'Boa tarde a todos', en: 'Good afternoon to everyone' }
+            ]},
+            { type: 'game', sentence: 'Boa tarde um café', words: ['Boa', 'tarde', 'um', 'café'] },
+            { type: 'tip', content: "Use 'Boa tarde' from after lunch until it gets dark." }
+        ]
+      },
       { word: "Boa noite", en: "Good night and sweet dreams.", ex: "Boa noite e bons sonhos." },
-      { word: "Como estás?", en: "Hello, how are you today?", ex: "Olá, como estás hoje?" },
-      { word: "Tudo bem?", en: "Everything is well here.", ex: "Tudo bem por aqui." },
-      { word: "Prazer", en: "Pleasure to meet you.", ex: "Muito prazer em conhecer-te." },
+      { 
+        word: "Como estás?", 
+        en: "How are you?",
+        lessons: [
+            { type: 'audio', content: 'Como estás?', sub: 'How are you?' },
+            { type: 'sentences', items: [
+                { pt: 'Como estás hoje?', en: 'How are you today?' },
+                { pt: 'Olá, como estás?', en: 'Hello, how are you?' }
+            ]},
+            { type: 'breakdown', items: [
+                { pt: 'Como', en: 'How' },
+                { pt: 'estás', en: 'are (you)' }
+            ]},
+            { type: 'variety', items: [
+                { pt: 'Como vai isso?', en: 'How is it going?' }
+            ]},
+            { type: 'game', sentence: 'Como estás hoje', words: ['Como', 'estás', 'hoje'] },
+            { type: 'tip', content: "In Portugal, we often drop the 'Tu' (you) and just say 'Como estás?'." }
+        ]
+      },
+      { 
+        word: "Tudo bem?", 
+        en: "Everything well?",
+        lessons: [
+            { type: 'audio', content: 'Tudo bem?', sub: 'Everything well?' },
+            { type: 'sentences', items: [
+                { pt: 'Tudo bem por aqui.', en: 'Everything is fine here.' },
+                { pt: 'Olá, tudo bem?', en: 'Hello, everything good?' }
+            ]},
+            { type: 'breakdown', items: [
+                { pt: 'Tudo', en: 'Everything' },
+                { pt: 'bem', en: 'well / fine' }
+            ]},
+            { type: 'variety', items: [
+                { pt: 'Está tudo bem?', en: 'Is everything well?' }
+            ]},
+            { type: 'game', sentence: 'Tudo bem por aqui', words: ['Tudo', 'bem', 'por', 'aqui'] },
+            { type: 'tip', content: "You can use 'Tudo bem?' as both a question and an answer!" }
+        ]
+      },
+      { 
+        word: "Prazer", 
+        en: "Pleasure",
+        lessons: [
+            { type: 'audio', content: 'Prazer', sub: 'Pleasure' },
+            { type: 'sentences', items: [
+                { pt: 'Muito prazer em conhecer-te.', en: 'Pleasure to meet you.' },
+                { pt: 'O prazer é meu.', en: 'The pleasure is mine.' }
+            ]},
+            { type: 'breakdown', items: [
+                { pt: 'Muito', en: 'Much / Very' },
+                { pt: 'prazer', en: 'pleasure' }
+            ]},
+            { type: 'variety', items: [
+                { pt: 'Encantado', en: 'Delighted' }
+            ]},
+            { type: 'game', sentence: 'Muito prazer em conhecer-te', words: ['Muito', 'prazer', 'em', 'conhecer-te'] },
+            { type: 'tip', content: "When meeting someone for the first time, 'Muito prazer' is the standard polite greeting." }
+        ]
+      },
       { word: "Até logo", en: "I have to go, see you later!", ex: "Tenho de ir, até logo!" },
       { word: "Tchau", en: "Bye! See you tomorrow.", ex: "Tchau! Vemo-nos amanhã." },
       { word: "Adeus", en: "Goodbye and have a good trip.", ex: "Adeus e boa viagem." },
@@ -69,7 +194,7 @@ export const scenarios = [
       { word: "Estudo", en: "I study Portuguese.", ex: "Eu estudo português." },
       { word: "Sim", en: "Yes, I want to go.", ex: "Sim, eu quero ir." },
       { word: "Não", en: "No, thank you.", ex: "Não, obrigado." },
-      { word: "Talvez", en: "Maybe I will go tomorrow.", ex: "Talvez eu vá amanhã." },
+      { word: "Talvez", en: "Maybe I will go tomorrow.", ex: "Talvez eu vá amãnhã." },
       { word: "Percebo", en: "Yes, I understand well.", ex: "Sim, eu percebo bem." },
       { word: "Repetir", en: "Can you repeat, please?", ex: "Podes repetir, por favor?" },
       { word: "Devagar", en: "Speak more slowly.", ex: "Fala mais devagar." },
@@ -79,6 +204,7 @@ export const scenarios = [
   },
   {
     id: "connectors",
+    category: "beginners",
     title: "Connecting Words",
     portugueseTitle: "Conectores",
     icon: "🔗",
@@ -118,6 +244,7 @@ export const scenarios = [
   },
   {
     id: "alphabet",
+    category: "beginners",
     title: "Alphabet & Accents",
     portugueseTitle: "O Alfabeto",
     icon: "🔤",
@@ -157,6 +284,7 @@ export const scenarios = [
   },
   {
     id: "questions",
+    category: "beginners",
     title: "Who, What, Where?",
     portugueseTitle: "Interrogações",
     icon: "❓",
@@ -196,6 +324,7 @@ export const scenarios = [
   },
   {
     id: "directions",
+    category: "everyday",
     title: "Directions",
     portugueseTitle: "Direções",
     icon: "🗺️",
@@ -235,6 +364,7 @@ export const scenarios = [
   },
   {
     id: "prepositions",
+    category: "everyday",
     title: "Prepositions",
     portugueseTitle: "Preposições",
     icon: "📍",
@@ -274,6 +404,7 @@ export const scenarios = [
   },
   {
     id: "phrases",
+    category: "everyday",
     title: "Useful Phrases",
     portugueseTitle: "Expressões",
     icon: "✨",
@@ -313,6 +444,7 @@ export const scenarios = [
   },
   {
     id: "family",
+    category: "everyday",
     title: "Family",
     portugueseTitle: "A Família",
     icon: "👨‍👩‍👧‍👦",
@@ -342,6 +474,7 @@ export const scenarios = [
   },
   {
     id: "diy-store",
+    category: "reallife",
     title: "At the DIY Store",
     portugueseTitle: "No Aki / Leroy Merlin",
     icon: "🛠️",
@@ -361,6 +494,7 @@ export const scenarios = [
   },
   {
     id: "hobbies",
+    category: "everyday",
     title: "Hobbies",
     portugueseTitle: "Passatempos",
     icon: "🎸",
